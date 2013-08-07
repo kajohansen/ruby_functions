@@ -62,21 +62,27 @@ def DecimalToLatLng(decimal_deg, lat_lng)
   puts lat_lng + " " + @degrees + "° " + @minutes.to_s + "' " + @seconds.to_s + "' " + @cardinal
 end
 
-# if ARGV.length == 4
-#   deg = ARGV[0]
-#   min = ARGV[1]
-#   sec = ARGV[2]
-#   cardinal = ARGV[3]
-#   LatLngToDecimal(deg.to_f, min.to_f, sec.to_f, cardinal.to_s)
-# elsif ARGV.length == 2
-#   puts "Got decimal degrees"
-# else
-#   puts "You can either put decimal latitude and longitude"
-#   puts "Or you can put degrees minutes seconds and cardinal direction"
-# end
+if ARGV.length == 4
+  deg = ARGV[0]
+  min = ARGV[1]
+  sec = ARGV[2]
+  cardinal = ARGV[3]
+  LatLngToDecimal(deg.to_f, min.to_f, sec.to_f, cardinal.to_s)
+elsif ARGV.length == 2
+  deg = ARGV[0]
+  lat_lng = ARGV[1]
+  DecimalToLatLng(deg, lat_lng)
+else
+  puts "You can either put decimal latitude or longitude"
+  puts " -- example1: 51.17926388888888 Lat"
+  puts " -- example2: -1.8262 Lng"
+  puts "-- Or --"
+  puts "You can put degrees minutes seconds and cardinal direction"
+  puts " -- example: 19 18 6 n"
+end
 
 
-LatLngToDecimal(19, 18, 6, "n")
-LatLngToDecimal(51, 10, 45.35, "s")
-DecimalToLatLng(51.17926388888888, "LAt")
-DecimalToLatLng(-1.8262166666666666, "LnG")
+# LatLngToDecimal(19, 18, 6, "n")
+# LatLngToDecimal(51, 10, 45.35, "s")
+# DecimalToLatLng(51.17926388888888, "LAt")
+# DecimalToLatLng(-1.8262166666666666, "LnG")
