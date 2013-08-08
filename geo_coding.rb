@@ -14,13 +14,13 @@ def LatLngToDecimal(deg, min, sec, cardinal)
     puts @decimal.to_s + " North"
     return
   when "S"
-    puts @decimal.to_s + " South"
+    puts "-" + @decimal.to_s + " South"
     return
   when "E"
     puts @decimal.to_s + " East"
     return
   when "W"
-    puts @decimal.to_s + " West"
+    puts "-" + @decimal.to_s + " West"
     return
   end
   puts "Error"
