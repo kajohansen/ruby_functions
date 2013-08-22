@@ -3,6 +3,7 @@
 # String extension class
 
 class String
+	# command line string output modifications
 	def black;          "\033[30m#{self}\033[0m" end
 	def red;            "\033[31m#{self}\033[0m" end
 	def green;          "\033[32m#{self}\033[0m" end
@@ -21,4 +22,9 @@ class String
 	def bg_gray;        "\033[47m#{self}\033[0m" end
 	def bold;           "\033[1m#{self}\033[22m" end
 	def reverse_color;  "\033[7m#{self}\033[27m" end
+
+# Check if we have a number
+	def numeric?
+		true if Float(self) rescue false
+	end
 end
