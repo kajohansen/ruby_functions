@@ -4,19 +4,13 @@
 
 require "StringExtensions.rb"
 
-def print_four_or_nine(num)
-	if num == 4
-		print "IV"
-	elsif num == 9
-		print "IX"
-	end
-end
-
 def	convert_one_num(num)
 	if num < 4
 		num.times do
 			print "I"
 		end
+	elsif num == 4
+		print "IV"
 	elsif num > 5 && num < 9
 		print "V"
 		num = num - 5
@@ -25,8 +19,8 @@ def	convert_one_num(num)
 		end
 	elsif num == 5
 		print "V"
-	else
-		print_four_or_nine(num)
+	elsif num == 9
+		print "IX"
 	end
 	print "\n"
 end
@@ -90,6 +84,35 @@ def convert_four_num(num)
 	convert_three_num(two_three_four)
 end
 
+@romans_dict = {"I" => 1, "IV" => 4, 
+								"V" => 5, "IX" => 9,
+								"X" => 10, "XL" => 40,  
+								"L" => 50, "XC" => 90, 
+								"C" => 100, "CD" => 400,
+								"D" => 500, "CM" => 900,
+								"M" => 1000}
+@romans_arr = ["I", "V", "X", "L", "C", "D", "M"]
+
+def convert_two_let(let)
+	if !@romans_dict[let]
+		a1, a2 = let.split('')
+		print @romans_dict[a1] + @romans_dict[a2]
+	else
+		print @romans_dict[let]
+	end
+end
+
+def convert_three_let(let)
+	a1, a2, a3 = let.split('')
+	a23 = a2 + a3
+	b1 = @romans_dict[a1]
+	if !@romans_dict[a23]
+		print b1 + @romans_dict[a2] + @romans_dict[a3]
+	else
+		print b1 + @romans_dict[a23]
+	end
+end
+
 if ARGV[0].numeric?
 	arabic = ARGV[0].length
 	number = ARGV[0]
@@ -103,5 +126,17 @@ if ARGV[0].numeric?
 		convert_four_num(number)
 	end
 else
-	puts "got Letter " + ARGV[0].length.to_s
+	roman = ARGV[0].length
+	number = ARGV[0]
+	if roman == 1
+		arabic = @romans_dict[number]
+		print arabic
+	elsif roman == 2
+		convert_two_let(number)
+	elsif roman == 3
+		convert_three_let(number)
+	elsif roman == 4
+		puts "Not yet implemented"
+	end
+	print "\n"
 end
