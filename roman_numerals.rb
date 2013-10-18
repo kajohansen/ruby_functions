@@ -2,7 +2,8 @@
 #
 # Convert to and from Roman Numerals
 
-require "StringExtensions.rb"
+root_dir = File.dirname(__FILE__)
+require root_dir + "/" + "StringExtensions.rb"
 
 def	convert_one_num(num)
 	if num < 4
