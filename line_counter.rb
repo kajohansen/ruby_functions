@@ -2,7 +2,8 @@
 #
 # project line counter
 
-require 'StringExtensions.rb'
+APP_ROOT = File.dirname(__FILE__) 
+require APP_ROOT + '/StringExtensions.rb'
 
 @file_hash = Hash.new
 @dir_arr = []

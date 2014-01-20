@@ -5,10 +5,9 @@
 # print blik effects or underlines
 # or we can use the String Extension class to print color's in bold..
 
-# require 'rubygems'
-# require 'colorize'
 
-require 'StringExtensions.rb'
+APP_ROOT = File.dirname(__FILE__) 
+require APP_ROOT + '/StringExtensions.rb'
 
 def num_to_lcd1(num)
 	if num == 1 || num == 4
