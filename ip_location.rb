@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 #
 # IP Location
+require "openssl"
 require 'geokit'
 
 if ARGV.length == 1
