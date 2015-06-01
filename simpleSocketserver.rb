@@ -1,0 +1,29 @@
+#!/usr/bin/ruby
+
+require 'em-websocket'
+
+EM.run {
+  EM::WebSocket.run(:host => "0.0.0.0", :port => 5301) do |ws|
+    ws.onopen { |handshake|
+				      puts "WebSocket connection open"
+							puts "WebSocket opened #{{
+		           :path => handshake.path,
+		           :query => handshake.query,
+		           :origin => handshake.origin,
+		          }}"	
+
+				      # Access properties on the EM::WebSocket::Handshake object, e.g.
+				      # path, query_string, origin, headers
+		
+				      # Publish message to the client
+				      ws.send "Hello Client, you connected to #{handshake.path}"
+				    }
+
+    ws.onclose { puts "Connection closed" }
+
+    ws.onmessage { |msg|
+				      puts "Recieved message: #{msg}"
+				      ws.send "Pong: #{msg}"
+				    }
+  end
+}
