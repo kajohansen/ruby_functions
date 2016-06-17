@@ -1,11 +1,12 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 #
 # IP Location
 require 'geokit'
 
 if ARGV.length == 1
 	puts "Echoing ip location"
-	location = Geokit::Geocoders::MultiGeocoder.geocode(ARGV[0])
+	#location = Geokit::Geocoders::MultiGeocoder.geocode ARGV[0]
+	location = Geokit::Geocoders::GoogleGeocoder.geocode ARGV[0]
 	if location.country
 		puts "Country :" + location.country
 	end
